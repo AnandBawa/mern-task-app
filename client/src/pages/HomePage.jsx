@@ -25,7 +25,6 @@ export const homePageLoader = (queryClient) => async () => {
 
 const HomePage = ({ queryClient }) => {
   const user = useQuery(userQuery)?.data;
-  console.log(user);
 
   const navigate = useNavigate();
 

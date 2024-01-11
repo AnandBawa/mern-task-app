@@ -78,6 +78,8 @@ export const editTask = async (req, res) => {
     { "tasks.$": updatedTask }
   );
 
+  console.log(task);
+
   if (task.modifiedCount) {
     res.status(StatusCodes.OK).json({ message: "Task Updated" });
   } else {

@@ -47,12 +47,12 @@ const TaskCard = ({ task, idx }) => {
         <div className="card-actions mt-4 flex justify-between">
           <label
             disabled={isSubmitting}
-            htmlFor="task._id"
+            htmlFor={task._id}
             className="btn btn-sm btn-primary"
           >
             Edit
           </label>
-          <input type="checkbox" id="task._id" className="modal-toggle" />
+          <input type="checkbox" id={task._id} className="modal-toggle" />
           <div className="modal px-1" role="dialog">
             <div className="modal-box px-3 py-2">
               <h3 className="font-bold text-lg">Edit Task</h3>
