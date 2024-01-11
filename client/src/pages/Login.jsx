@@ -20,7 +20,9 @@ export const loginAction =
       try {
         const response = await customFetch.post("/auth/login", user);
         queryClient.invalidateQueries();
-        toast.success(response?.data?.message || "Welcome back!");
+        toast.success(response?.data?.message || "Welcome back!", {
+          delay: 1500,
+        });
         return redirect("/tasks");
       } catch (error) {
         toast.error(
@@ -38,7 +40,9 @@ export const loginAction =
 
         const response = await customFetch.post("/auth/login", data);
         queryClient.invalidateQueries();
-        toast.success(response?.data?.message || "Welcome back!");
+        toast.success(response?.data?.message || "Welcome back!", {
+          delay: 1500,
+        });
         return redirect("/tasks");
       } catch (error) {
         toast.error(
