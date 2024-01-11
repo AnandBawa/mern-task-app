@@ -15,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       pauseOnFocusLoss={false}
       pauseOnHover={false}
       newestOnTop
+      limit={6}
     />
   </>
 );
