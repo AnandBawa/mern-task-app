@@ -1,4 +1,4 @@
-# TASK APP (MERN)
+# TASKS APP - MERN
 
 A full-stack TO-DOs app based on MERN stack.
 
