@@ -28,7 +28,10 @@ const TaskCard = ({ task, idx }) => {
           <input type="hidden" name="id" value={task._id} />
           <input type="hidden" name="action" value="update" />
           <div className="flex justify-between">
-            <h2 className="card-title">{`${idx + 1}. ${task.title}`}</h2>
+            <h2 className="card-title">
+              <span className="text-primary">{idx + 1}.</span>
+              {task.title}
+            </h2>
             <input
               type="checkbox"
               disabled={isSubmitting}
