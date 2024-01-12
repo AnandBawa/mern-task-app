@@ -3,14 +3,26 @@ import TaskCard from "./TaskCard";
 
 // Task Lists component that displays individual tasks
 const TasksList = () => {
-  const { tasks } = useOutletContext();
+  const { email, tasks } = useOutletContext();
 
   // render differently if no tasks are added
   if (tasks.length === 0) {
     return (
-      <p className="align-element mt-4 text-lg font-medium tracking-wide">
-        No tasks added
-      </p>
+      <section className="align-element">
+        <p className="mt-4 sm:mt-8 text-lg font-medium tracking-wide">
+          No tasks added
+        </p>
+        <Form method="post" className="mt-4">
+          <button
+            type="submit"
+            name="action"
+            value="mock"
+            className="btn btn-sm sm:btn-md btn-accent"
+          >
+            Add Mock Tasks
+          </button>
+        </Form>
+      </section>
     );
   }
 

@@ -7,10 +7,11 @@ import {
   editTask,
   deleteTask,
   deleteAllTasks,
+  mockTasks,
 } from "../controllers/tasksController.js";
 
 // Create a new task or delete all tasks
-taskRouter.route("/").post(createTask).patch(deleteAllTasks);
+taskRouter.route("/").post(createTask).put(mockTasks).patch(deleteAllTasks);
 
 // Modify a task or delete one
 taskRouter.route("/:id").patch(editTask).delete(deleteTask);

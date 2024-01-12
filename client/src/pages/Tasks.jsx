@@ -77,6 +77,18 @@ export const tasksAction =
       return redirect(`/tasks`);
     }
 
+    // Add mock tasks
+    if (action === "mock") {
+      try {
+        await customFetch.put(`/tasks`);
+        queryClient.invalidateQueries({ queryKey: ["user"] });
+        toast.success(`Mock Tasks Added`);
+      } catch (error) {
+        toast.error(error?.response?.data?.message || "There was an error");
+      }
+      return redirect(`/tasks`);
+    }
+
     return null;
   };
 

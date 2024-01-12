@@ -2,6 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 import User from "../models/UserModel.js";
 import { BadRequestError } from "../utils/customErrors.js";
+import { MockTasksData } from "../utils/constants.js";
 
 // Create a new task after validation
 export const createTask = async (req, res) => {
@@ -107,4 +108,13 @@ export const deleteTask = async (req, res) => {
   } else {
     throw new BadRequestError("Invalid request");
   }
+};
+
+// Insert mock tasks
+export const mockTasks = async (req, res) => {
+  await User.findByIdAndUpdate(req.user.userId, {
+    $set: { tasks: MockTasksData },
+  });
+
+  res.status(StatusCodes.OK).json({ message: "Mock Tasks Added" });
 };
