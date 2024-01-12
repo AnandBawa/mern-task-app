@@ -1,3 +1,4 @@
+// Global Loading animation component
 const Loading = () => {
   return (
     <div className="min-h-[70vh] grid place-items-center">

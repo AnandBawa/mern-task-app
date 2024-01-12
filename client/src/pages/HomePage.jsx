@@ -1,4 +1,4 @@
-import { Outlet, useNavigate, useNavigation, Navigate } from "react-router-dom";
+import { Outlet, useNavigate, useNavigation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import Navbar from "../components/Navbar";
@@ -14,6 +14,7 @@ const userQuery = {
   },
 };
 
+// React Router loader to load current user at home page use and caching using React Query
 export const homePageLoader = (queryClient) => async () => {
   try {
     const userData = await queryClient.ensureQueryData(userQuery);
@@ -24,13 +25,17 @@ export const homePageLoader = (queryClient) => async () => {
 };
 
 const HomePage = ({ queryClient }) => {
+  // always check the login state and get current user details
   const user = useQuery(userQuery)?.data;
 
+  // useNavigate hook to navigate pages
   const navigate = useNavigate();
 
+  // useNavigation hook to display the loading animation when navigating pages
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
+  // logout function
   const logout = async () => {
     navigate("/");
     await customFetch.post("/auth/logout");
@@ -42,6 +47,7 @@ const HomePage = ({ queryClient }) => {
     <div>
       <Navbar user={user} logout={logout} />
       <section className=" py-4 sm:py-10">
+        {/* display loading animation or pages based on router state */}
         {isLoading ? <Loading /> : <Outlet context={user} />}
       </section>
     </div>

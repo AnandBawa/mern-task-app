@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import User from "../models/UserModel.js";
 import { BadRequestError } from "../utils/customErrors.js";
 
+// Create a new task after validation
 export const createTask = async (req, res) => {
   const { title, description } = req.body;
 
@@ -39,12 +40,14 @@ export const createTask = async (req, res) => {
   }
 };
 
+// Clear all tasks
 export const deleteAllTasks = async (req, res) => {
   await User.findByIdAndUpdate(req.user.userId, { $set: { tasks: [] } });
 
   res.status(StatusCodes.OK).json({ message: "All Tasks Deleted" });
 };
 
+// Update a task after validation
 export const editTask = async (req, res) => {
   const { id } = req.params;
 
@@ -78,8 +81,6 @@ export const editTask = async (req, res) => {
     { "tasks.$": updatedTask }
   );
 
-  console.log(task);
-
   if (task.modifiedCount) {
     res.status(StatusCodes.OK).json({ message: "Task Updated" });
   } else {
@@ -87,6 +88,7 @@ export const editTask = async (req, res) => {
   }
 };
 
+// Delete a task
 export const deleteTask = async (req, res) => {
   const { id } = req.params;
 

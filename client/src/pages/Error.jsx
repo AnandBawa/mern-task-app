@@ -1,5 +1,6 @@
 import { Link, useRouteError } from "react-router-dom";
 
+// Global Error Page that shows if its a 404 error or other errors
 const Error = () => {
   const error = useRouteError();
   console.log(error);
@@ -28,6 +29,11 @@ const Error = () => {
   return (
     <main className="grid min-h-[70vh] place-items-center px-8">
       <h4 className="text-center font-bold text-4xl">There was an error...</h4>
+      <div className="mt-10">
+        <Link to="/" className="btn btn-secondary">
+          Home
+        </Link>
+      </div>
     </main>
   );
 };

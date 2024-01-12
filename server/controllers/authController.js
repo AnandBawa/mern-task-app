@@ -8,6 +8,7 @@ import {
 import { comparePassword, hashPassword } from "../utils/passwordUtils.js";
 import { createJwtToken } from "../utils/tokenUtils.js";
 
+// Register a new user after successful validation
 export const register = async (req, res) => {
   const userInput = req.body;
 
@@ -58,6 +59,7 @@ export const register = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ message: "Account Created" });
 };
 
+// Login user after successful validation and create a JWT token and set as cookie
 export const login = async (req, res) => {
   const userInput = req.body;
 
@@ -93,7 +95,6 @@ export const login = async (req, res) => {
   if (!isMatch) throw new UnauthenticatedError("Invalid Credentials");
 
   const token = createJwtToken({ userId: user._id });
-
   const oneDay = 1000 * 60 * 60 * 24;
 
   res.cookie("token", token, {
@@ -105,6 +106,7 @@ export const login = async (req, res) => {
   res.status(StatusCodes.OK).json({ message: `Welcome back, ${user.name}` });
 };
 
+// Logout user by expiring token immediately
 export const logout = (req, res) => {
   res.cookie("token", "logout", {
     httpOnly: true,

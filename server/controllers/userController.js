@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/UserModel.js";
 
-// Get current logged-in user details, send null if no user is logged-in
+// Get currently logged-in user details after successful authentication
 export const getCurrentUser = async (req, res) => {
   const user = await User.findById(req.user.userId);
   res

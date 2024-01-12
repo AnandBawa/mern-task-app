@@ -1,10 +1,15 @@
 import { Form, useNavigation, useSubmit } from "react-router-dom";
 
+// Single Task Component
 const TaskCard = ({ task, idx }) => {
+  // useSubmit hook to search on value change
   const submit = useSubmit();
+
+  // useNavigation hook to disable buttons when form is being submitted
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
+  // debounce function with 400ms second delayed submit for completed checkbox toggle
   let debounceTimer;
   const delaySubmit = (e) => {
     const form = e.currentTarget.form;
@@ -22,6 +27,7 @@ const TaskCard = ({ task, idx }) => {
     >
       <div className="card-body p-2 sm:p-4 gap-0 grid content-between">
         <Form>
+          {/* hidden input fields to submit when completed checkbox input changes */}
           <input type="hidden" name="title" value={task.title} />
           <input type="hidden" name="completed" value={false} />
           <input type="hidden" name="description" value={task.description} />
@@ -48,6 +54,7 @@ const TaskCard = ({ task, idx }) => {
           <p>{task.description}</p>
         </Form>
         <div className="card-actions mt-4 flex justify-between">
+          {/* Modal for editing a task */}
           <label
             disabled={isSubmitting}
             htmlFor={task._id}

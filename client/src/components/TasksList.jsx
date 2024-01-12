@@ -1,9 +1,11 @@
 import { Form, useOutletContext } from "react-router-dom";
 import TaskCard from "./TaskCard";
 
+// Task Lists component that displays individual tasks
 const TasksList = () => {
   const { tasks } = useOutletContext();
 
+  // render differently if no tasks are added
   if (tasks.length === 0) {
     return (
       <p className="align-element mt-4 text-lg font-medium tracking-wide">
@@ -18,6 +20,7 @@ const TasksList = () => {
         <h2 className="text-xl font-medium tracking-wider place-self-center">
           All Tasks
         </h2>
+        {/* Modal for clearing all tasks */}
         <label
           htmlFor="clearListModal"
           className="btn btn-sm btn-ghost text-secondary place-self-center text-lg tracking-wide"

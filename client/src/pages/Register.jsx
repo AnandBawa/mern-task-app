@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
 import { Form, Link, useNavigation, redirect } from "react-router-dom";
-import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
+import customFetch from "../utils/customFetch";
 
+// React Router action to register the user on form submission
 export const registerAction = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
@@ -24,11 +25,14 @@ export const registerAction = async ({ request }) => {
 };
 
 const Register = () => {
+  // useNavigation hook to disable buttons when form is being submitted
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
+  // useRef hook to match repeat password with password input
   const passwordRef = useRef(null);
 
+  // useState to display live input validation as field changes
   const [isNameValid, setNameValid] = useState(null);
   const [isEmailValid, setEmailValid] = useState(null);
   const [isPasswordValid, setPasswordValid] = useState(null);

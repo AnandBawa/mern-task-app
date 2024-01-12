@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-// Use JSONwebToken for authentication
+// Use JSONwebToken (JWT) for authentication
 
 export const createJwtToken = (payload) => {
   const token = jwt.sign(payload, process.env.JWT_SECRET, {

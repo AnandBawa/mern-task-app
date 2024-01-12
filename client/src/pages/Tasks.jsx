@@ -3,15 +3,16 @@ import { toast } from "react-toastify";
 import { AddTask, TasksList } from "../components";
 import customFetch from "../utils/customFetch";
 
+// React Router action to handle adding, editing or deleting tasks
 export const tasksAction =
   (queryClient) =>
   async ({ request }) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
-    console.log(data);
 
     const { action, id } = data;
 
+    // Add a new task
     if (action === "add") {
       try {
         delete data.action;
@@ -31,6 +32,7 @@ export const tasksAction =
       return redirect(`/tasks`);
     }
 
+    // Update a task
     if (action === "update") {
       try {
         delete data.action;
@@ -51,6 +53,7 @@ export const tasksAction =
       return redirect(`/tasks`);
     }
 
+    // Delete a task
     if (action === "delete") {
       try {
         await customFetch.delete(`/tasks/${id}`);
@@ -62,6 +65,7 @@ export const tasksAction =
       return redirect(`/tasks`);
     }
 
+    // Clear all tasks
     if (action === "clear") {
       try {
         await customFetch.patch(`/tasks`);
@@ -79,6 +83,7 @@ export const tasksAction =
 const Tasks = () => {
   const user = useOutletContext();
 
+  // redirect if page is accessed without login
   if (!user) {
     toast.error("You are not logged in");
     return <Navigate to="/" replace={true} />;

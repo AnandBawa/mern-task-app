@@ -1,5 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 
+// Custom error classes
+
 export class NotFoundError extends Error {
   constructor(message) {
     super(message);

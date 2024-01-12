@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
+// Theme Toggle icon and switch on click functionality
+
 const themes = {
   sunset: "sunset",
   winter: "winter",

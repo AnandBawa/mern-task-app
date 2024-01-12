@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { HomePage, Login, Register, Tasks, Error, Landing } from "./pages";
+import { HomePage, Login, Register, Tasks, Error } from "./pages";
 
 // Loaders
 import { homePageLoader } from "./pages/HomePage";
@@ -32,11 +32,6 @@ const router = createBrowserRouter([
         element: <Login />,
         action: loginAction(queryClient),
       },
-      // {
-      //   path: "login",
-      //   element: <Login />,
-      //   action: loginAction(queryClient),
-      // },
       {
         path: "register",
         element: <Register />,

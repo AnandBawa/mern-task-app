@@ -4,6 +4,7 @@ import { login, logout, register } from "../controllers/authController.js";
 
 const authRouter = Router();
 
+// Rate limit routes to prevent abuse
 const apiLimiter = rateLimiter({
   windowMs: 15 * 60 * 1000,
   max: 25,
@@ -11,10 +12,13 @@ const apiLimiter = rateLimiter({
   validate: { xForwardedForHeader: false },
 });
 
+// Register
 authRouter.route("/register").post(apiLimiter, register);
 
+// Login
 authRouter.route("/login").post(apiLimiter, login);
 
+// Logout
 authRouter.route("/logout").post(logout);
 
 export default authRouter;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 
+// NavBar that is always visible on the top.
 const Navbar = ({ user, logout }) => {
   return (
     <nav className="bg-base-200">

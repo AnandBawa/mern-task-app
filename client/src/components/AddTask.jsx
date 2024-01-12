@@ -1,9 +1,11 @@
 import { Form, useNavigation, useOutletContext } from "react-router-dom";
 
+// Add Task component
 const AddTask = () => {
   const { tasks } = useOutletContext();
   const max = tasks?.length >= 30;
 
+  // useNavigation hook to disable buttons when form is being submitted
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 

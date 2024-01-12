@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 
+// Error handling middleware that handles custom errors and responses
 const errorHandlerMiddleware = (err, req, res, next) => {
   // console.log(err);
 

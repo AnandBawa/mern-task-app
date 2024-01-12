@@ -1,8 +1,9 @@
 import { Form, Link, useNavigation, redirect } from "react-router-dom";
-import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import customFetch from "../utils/customFetch";
 
+// React Router action to login the user on login form submission or login as guest
 export const loginAction =
   (queryClient) =>
   async ({ request }) => {
@@ -11,6 +12,7 @@ export const loginAction =
 
     const { action } = data;
 
+    // Guest login
     if (action === "guest") {
       const user = {
         email: "test@test.com",
@@ -33,6 +35,7 @@ export const loginAction =
       }
     }
 
+    // User Login
     if (action === "login") {
       try {
         delete data.action;
@@ -55,9 +58,11 @@ export const loginAction =
   };
 
 const Login = () => {
+  // useNavigation hook to disable buttons when form is being submitted
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
+  // useState to display live input validation as field changes
   const [isEmailValid, setEmailValid] = useState(null);
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
