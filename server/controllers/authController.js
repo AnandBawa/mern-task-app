@@ -103,6 +103,8 @@ export const login = async (req, res) => {
     secure: process.env.NODE_ENV === "production",
   });
 
+  console.log(`${user.email} logged in`);
+
   res.status(StatusCodes.OK).json({ message: `Welcome back, ${user.name}` });
 };
 
