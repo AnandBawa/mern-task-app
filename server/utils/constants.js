@@ -27,7 +27,7 @@ export const MockTasksData = [
     completed: false,
   },
   {
-    title: "Internet solution",
+    title: "Internet",
     description:
       "Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt",
     completed: false,
